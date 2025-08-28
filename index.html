@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Open Graph defaults -->
+    <meta property="og:title" content="Precision Network Lab - University of Gothenburg" />
+    <meta property="og:description" content="From molecular networks to clinical decisions: advancing systems medicine for progressive diseases." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://muharif.github.io/labwebsite/" />
+    <meta property="og:image" content="https://muharif.github.io/labwebsite/images/bg.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Precision Network Lab - University of Gothenburg" />
+    <meta name="twitter:description" content="From molecular networks to clinical decisions: advancing systems medicine for progressive diseases." />
+    <meta name="twitter:image" content="https://muharif.github.io/labwebsite/images/bg.png" />
+
+    <title>Precision Network Lab - University of Gothenburg</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.2rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%; 
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo svg {
+            height: 80px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2c3e50;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-nav li {
+            padding: 0.5rem 2rem;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section with Animated Cards */
+        .hero {
+            color: white;
+            text-align: center;
+            margin: 0 auto;
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-radius: 20px;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            min-height: 250px; /* Ensure minimum height */
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+
+        /* Key fixes for hero background */
+        .hero-card {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: absolute;
+            border-radius: 20px;
+            
+            /* FIXED: Background image properties */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* Remove the CSS variable approach and use direct URLs */
+        }
+
+        /* Specific background for each card */
+        .hero-card:nth-child(1) {
+            background-image: url('images/bg.png');
+        }
+
+        .hero-card:nth-child(2) {
+            background-image: url('images/bg.png'); /* or whatever your second image is */
+        }
+
+        .hero-card:nth-child(3) {
+            background-image: url('images/bg.png');
+            /* Or if you don't have a third image, use a gradient: */
+        }
+
+        .hero-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-card.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hero-card.prev {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+
+        .hero-card h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0rem;
+            font-weight: 700;
+            color: #ffffff;
+            /*text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.9);*/
+            letter-spacing: -0.02em;
+        }
+
+        .hero-card p {
+            font-size: 1.4rem;
+            margin-bottom: 0rem;
+            color: #ffffff;
+            /*text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);*/
+            font-weight: 500;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #004b8a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: black;
+            transform: scale(1.2);
+        }
+
+        /* Main Content */
+        main {
+            background: white;
+            min-height: 100vh;
+        }
+
+        .section {
+            padding: 40px 0;
+            padding-top: 120px; /* Add padding to account for fixed header */
+            display: none;
+        }
+
+        .section#home {
+            padding-top: 40px; /* Less padding for home section with hero */
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        /* Research Section */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 75, 138, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 75, 138, 0.1);
+        }
+
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 75, 138, 0.2);
+        }
+
+        .research-card h3 {
+            color: #004b8a;
+            margin-bottom: 1rem;
+        }
+
+        /* Publications */
+        .pub-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #004b8a;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 75, 138, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .pub-card:hover {
+            transform: translateX(5px);
+        }
+
+        .pub-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-authors {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-journal {
+            color: #004b8a;
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #004b8a, #0066cc);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 75, 138, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 75, 138, 0.4);
+        }
+
+        .research-viz {
+            background: linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+            border: 1px solid rgba(0, 75, 138, 0.1);
+        }
+
+        #networkCanvas {
+            border: 1px solid rgba(0, 75, 138, 0.2);
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 75, 138, 0.1);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 75, 138, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 75, 138, 0.1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 75, 138, 0.2);
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #004b8a 0%, #0066cc 100%);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #004b8a;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #003d7a 0%, #004b8a 100%);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .funders {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .funder {
+            background: white;
+            color: #004b8a;
+            padding: 1rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .funders {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #networkCanvas {
+                width: 100% !important;
+                height: 250px !important;
+            }
+        }
+    </style>
+    <script>
+        // Define carousel functions before the HTML loads
+        let currentHeroCard = 0;
+        let heroCards = null;
+        let indicators = null;
+        let heroInterval = null;
+        
+        function setHeroCard(index) {
+            if (!heroCards) {
+                heroCards = document.querySelectorAll('.hero-card');
+                indicators = document.querySelectorAll('.indicator');
+            }
+            
+            if (!heroCards.length) return;
+            
+            // Remove classes from all cards and indicators
+            heroCards.forEach(card => card.classList.remove('active', 'prev'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Add prev class to current card
+            if (heroCards[currentHeroCard]) {
+                heroCards[currentHeroCard].classList.add('prev');
+            }
+            
+            // Set new active card and indicator
+            currentHeroCard = index;
+            heroCards[currentHeroCard].classList.add('active');
+            indicators[currentHeroCard].classList.add('active');
+            
+            // Restart timer
+            if (heroInterval) {
+                clearInterval(heroInterval);
+            }
+            heroInterval = setInterval(nextHeroCard, 5000);
+        }
+        
+        function nextHeroCard() {
+            const nextIndex = (currentHeroCard + 1) % 3;
+            setHeroCard(nextIndex);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+              <a href="#home" onclick="showSection('home')">
+                <svg width="300" height="100" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Background circle for depth -->
+                  <circle cx="40" cy="40" r="32" fill="url(#bgGradient)" opacity="0.1"/>
+                  
+                  <!-- Network nodes -->
+                  <circle cx="22" cy="20" r="3.5" fill="url(#nodeGradient1)"/>
+                  <circle cx="40" cy="15" r="4" fill="url(#nodeGradient2)"/>
+                  <circle cx="58" cy="22" r="3" fill="url(#nodeGradient3)"/>
+                  <circle cx="15" cy="35" r="3" fill="url(#nodeGradient3)"/>
+                  <circle cx="32" cy="35" r="4.5" fill="url(#nodeGradient1)"/>
+                  <circle cx="48" cy="38" r="3.5" fill="url(#nodeGradient2)"/>
+                  <circle cx="65" cy="35" r="3" fill="url(#nodeGradient1)"/>
+                  <circle cx="25" cy="52" r="3.5" fill="url(#nodeGradient2)"/>
+                  <circle cx="45" cy="55" r="4" fill="url(#nodeGradient3)"/>
+                  <circle cx="35" cy="65" r="3" fill="url(#nodeGradient1)"/>
+                  <circle cx="55" cy="62" r="3" fill="url(#nodeGradient2)"/>
+                  
+                  <!-- Network connections -->
+                  <line x1="22" y1="20" x2="40" y2="15" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="40" y1="15" x2="58" y2="22" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="22" y1="20" x2="32" y2="35" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="32" y1="35" x2="48" y2="38" stroke="url(#connectionGradient)" stroke-width="2" opacity="0.8"/>
+                  <line x1="48" y1="38" x2="58" y2="22" stroke="url(#connectionGradient)" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="15" y1="35" x2="32" y2="35" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="48" y1="38" x2="65" y2="35" stroke="url(#connectionGradient)" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="32" y1="35" x2="25" y2="52" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="48" y1="38" x2="45" y2="55" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="25" y1="52" x2="45" y2="55" stroke="url(#connectionGradient)" stroke-width="1.6" opacity="0.6"/>
+                  <line x1="25" y1="52" x2="35" y2="65" stroke="url(#connectionGradient)" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="45" y1="55" x2="55" y2="62" stroke="url(#connectionGradient)" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="35" y1="65" x2="55" y2="62" stroke="url(#connectionGradient)" stroke-width="1.4" opacity="0.5"/>
+                  <line x1="15" y1="35" x2="25" y2="52" stroke="url(#connectionGradient)" stroke-width="1.3" opacity="0.5"/>
+                  <line x1="65" y1="35" x2="55" y2="62" stroke="url(#connectionGradient)" stroke-width="1.3" opacity="0.5"/>
+                  
+                  <!-- Enhanced DNA double helix -->
+                  <!-- First strand -->
+                  <path d="M 68 18 Q 73 23 68 28 Q 63 33 68 38 Q 73 43 68 48 Q 63 53 68 58 Q 73 63 68 68" 
+                        stroke="url(#dnaGradient)" stroke-width="3" fill="none" opacity="0.8"/>
+                  <!-- Second strand -->
+                  <path d="M 74 18 Q 69 23 74 28 Q 79 33 74 38 Q 69 43 74 48 Q 79 53 74 58 Q 69 63 74 68" 
+                        stroke="url(#dnaGradient2)" stroke-width="3" fill="none" opacity="0.8"/>
+                  
+                  <!-- Base pairs (horizontal connections) -->
+                  <line x1="68" y1="23" x2="74" y2="23" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="68" y1="33" x2="74" y2="33" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="68" y1="43" x2="74" y2="43" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="68" y1="53" x2="74" y2="53" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="68" y1="63" x2="74" y2="63" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  
+                  <!-- Base pair dots -->
+                  <circle cx="71" cy="23" r="1" fill="#e74c3c" opacity="0.8"/>
+                  <circle cx="71" cy="33" r="1" fill="#3498db" opacity="0.8"/>
+                  <circle cx="71" cy="43" r="1" fill="#2ecc71" opacity="0.8"/>
+                  <circle cx="71" cy="53" r="1" fill="#f39c12" opacity="0.8"/>
+                  <circle cx="71" cy="63" r="1" fill="#e74c3c" opacity="0.8"/>
+                  
+                  <!-- Small data points (representing omics data) -->
+                  <circle cx="15" cy="15" r="1.5" fill="#3498db" opacity="0.8"/>
+                  <circle cx="65" cy="15" r="1.5" fill="#e74c3c" opacity="0.8"/>
+                  <circle cx="15" cy="65" r="1.5" fill="#2ecc71" opacity="0.8"/>
+                  <circle cx="65" cy="65" r="1.5" fill="#f39c12" opacity="0.8"/>
+                  
+                  <!-- Text -->
+                  <text x="95" y="32" font-family="'Segoe UI', Arial, sans-serif" font-size="24" font-weight="700" fill="url(#textGradient)">Precision</text>
+                  <text x="95" y="54" font-family="'Segoe UI', Arial, sans-serif" font-size="24" font-weight="700" fill="url(#textGradient)">Network Lab</text>
+                  <text x="95" y="70" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="300" fill="#7f8c8d">University of Gothenburg</text>
+                  
+                  <!-- Gradients -->
+                  <defs>
+                    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#667eea"/>
+                      <stop offset="100%" stop-color="#764ba2"/>
+                    </linearGradient>
+                    
+                    <radialGradient id="nodeGradient1" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#3498db"/>
+                      <stop offset="100%" stop-color="#2980b9"/>
+                    </radialGradient>
+                    
+                    <radialGradient id="nodeGradient2" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#e74c3c"/>
+                      <stop offset="100%" stop-color="#c0392b"/>
+                    </radialGradient>
+                    
+                    <radialGradient id="nodeGradient3" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#2ecc71"/>
+                      <stop offset="100%" stop-color="#27ae60"/>
+                    </radialGradient>
+                    
+                    <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#3498db"/>
+                      <stop offset="100%" stop-color="#9b59b6"/>
+                    </linearGradient>
+                    
+                    <linearGradient id="dnaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#f39c12"/>
+                      <stop offset="100%" stop-color="#e67e22"/>
+                    </linearGradient>
+                    
+                    <linearGradient id="dnaGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#e74c3c"/>
+                      <stop offset="100%" stop-color="#c0392b"/>
+                    </linearGradient>
+                    
+                    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2c3e50"/>
+                      <stop offset="100%" stop-color="#34495e"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+            </a>
+            </div>
+            <ul class="nav-links">
+              <li><a href="#home">Home</a></li>
+              <!-- <li><a href="#research">Research</a></li> -->
+              <li><a href="#publications">Publications</a></li>
+              <li><a href="#team">Team</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <div class="mobile-nav" id="mobileNav">
+                <ul>
+                <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
+                <!-- <li><a href="#research" onclick="toggleMobileMenu()">Research</a></li> -->
+                <li><a href="#publications" onclick="toggleMobileMenu()">Publications</a></li>
+                <li><a href="#team" onclick="toggleMobileMenu()">Team</a></li>
+                <li><a href="#blog" onclick="toggleMobileMenu()">Blog</a></li>
+                <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-carousel">
+                <div class="hero-card active" style="background-image: url('images/bg3.png');">
+                        <h1>Precision Network Lab</h1>
+                        <p>From molecular networks to clinical decisions: advancing systems medicine for progressive diseases.</p>
+                        <div class="hero-subtitle">
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="hero-card" style="background-image: url('images/bg2.png');">
+                        <h1>Network Biology</h1>
+                        <p>Unraveling molecular networks to understand disease mechanisms</p>
+                    </div>
+                    
+                    <div class="hero-card" style="background-image: url('images/bg4.png');">
+                        <h1>AI-Driven Discovery</h1>
+                        <p>Machine Learning & Multi-omics for disease diagnosis and drug discovery</p>
+                    </div>
+                    
+
+                </div>
+                
+                <div class="hero-indicators">
+                    <div class="indicator active" onclick="setHeroCard(0)"></div>
+                    <div class="indicator" onclick="setHeroCard(1)"></div>
+                    <div class="indicator" onclick="setHeroCard(2)"></div>
+                </div>
+            </div>
+            
+            <div class="container" style="padding: 20px 20px;">
+                <h2>Research Highlights</h2>
+                <div class="research-grid" style="margin-bottom: 2rem;">
+                    <div class="research-card">
+                        <h3>🧬 Multi-omics Network Integration</h3>
+                        <p>Our latest breakthrough combines transcriptomics, proteomics, and metabolomics data using advanced graph neural networks to identify novel disease biomarkers and therapeutic targets in cancer research.</p>
+                        <div style="margin-top: 1rem; padding: 0.5rem; background: rgba(52, 152, 219, 0.1); border-radius: 8px; font-size: 0.9rem; color: #2980b9;">
+                            <strong>Impact:</strong> Published in Nature Computational Biology, featured in 15+ news outlets
+                        </div>
+                    </div>
+                    
+                    <div class="research-card">
+                        <h3>🤖 AI-Driven Drug Discovery</h3>
+                        <p>We developed a machine learning pipeline that predicts drug-target interactions with 94% accuracy, significantly reducing the time and cost of drug discovery processes for metabolic diseases.</p>
+                        <div style="margin-top: 1rem; padding: 0.5rem; background: rgba(155, 89, 182, 0.1); border-radius: 8px; font-size: 0.9rem; color: #8e44ad;">
+                            <strong>Collaboration:</strong> Partnership with AstraZeneca and Novartis
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>Key Publications</h2>
+                <div class="pub-card">
+                    <div class="pub-title">Network-based machine learning approaches for multi-omics data integration in cancer research</div>
+                    <div class="pub-authors">Arif, M., et al.</div>
+                    <div class="pub-journal">Nature Computational Biology, 2024</div>
+                </div>
+                
+                <div class="pub-card">
+                    <div class="pub-title">Systems biology approaches to understanding metabolic networks in human disease</div>
+                    <div class="pub-authors">Arif, M., Johnson, K., Smith, L.</div>
+                    <div class="pub-journal">Cell Systems, 2023</div>
+                </div>
+                
+                <div class="pub-card">
+                    <div class="pub-title">Deep learning for protein-protein interaction prediction using network topology</div>
+                    <div class="pub-authors">Arif, M., Anderson, P., Wilson, R.</div>
+                    <div class="pub-journal">Bioinformatics, 2023</div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button class="btn" onclick="showSection('publications')">View All Publications →</button>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <!-- <section id="research" class="section">
+            <div class="container">
+                <h2>Research</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: #7f8c8d;">
+                    Our laboratory focuses on developing and applying computational methods to understand complex biological systems through multi-omics data analysis.
+                </p>
+                
+                <div class="research-grid">
+                    <div class="research-card">
+                        <h3>Network Analysis</h3>
+                        <p>We develop novel algorithms for analyzing biological networks, including protein-protein interactions, metabolic pathways, and gene regulatory networks. Our methods help identify key regulatory mechanisms and disease-associated modules.</p>
+                    </div>
+                    
+                    <div class="research-card">
+                        <h3>Machine Learning</h3>
+                        <p>Application of advanced machine learning techniques including deep learning, ensemble methods, and graph neural networks to predict biological outcomes and classify disease states from omics data.</p>
+                    </div>
+                    
+                    <div class="research-card">
+                        <h3>Multi-omics Integration</h3>
+                        <p>Development of computational frameworks for integrating genomics, transcriptomics, proteomics, and metabolomics data to gain comprehensive insights into biological systems and disease mechanisms.</p>
+                    </div>
+                    
+                    <div class="research-card">
+                        <h3>Systems Biology</h3>
+                        <p>Using systems-level approaches to understand how molecular components interact within cells and organisms, with particular focus on cancer, metabolic disorders, and aging-related diseases.</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Publications Section -->
+        <section id="publications" class="section">
+            <div class="container">
+                <h2>All Publications</h2>
+                
+                <div class="pub-card">
+                    <div class="pub-title">Network-based machine learning approaches for multi-omics data integration in cancer research</div>
+                    <div class="pub-authors">Arif, M., et al.</div>
+                    <div class="pub-journal">Nature Computational Biology, 2024</div>
+                </div>
+                
+                <div class="pub-card">
+                    <div class="pub-title">Systems biology approaches to understanding metabolic networks in human disease</div>
+                    <div class="pub-authors">Arif, M., Johnson, K., Smith, L.</div>
+                    <div class="pub-journal">Cell Systems, 2023</div>
+                </div>
+                
+                <div class="pub-card">
+                    <div class="pub-title">Deep learning for protein-protein interaction prediction using network topology</div>
+                    <div class="pub-authors">Arif, M., Anderson, P., Wilson, R.</div>
+                    <div class="pub-journal">Bioinformatics, 2023</div>
+                </div>
+                
+                <div class="pub-card">
+                    <div class="pub-title">Computational methods for identifying drug targets in metabolic networks</div>
+                    <div class="pub-authors">Arif, M., Brown, A., Davis, C.</div>
+                    <div class="pub-journal">Nature Methods, 2022</div>
+                </div>
+                
+                <div class="pub-card">
+                    <div class="pub-title">Graph neural networks for predicting gene expression from chromatin structure</div>
+                    <div class="pub-authors">Arif, M., Thompson, J., Lee, S.</div>
+                    <div class="pub-journal">Nature Genetics, 2022</div>
+                </div>
+                
+                <div class="pub-card">
+                    <div class="pub-title">Multi-scale modeling of cellular signaling networks in cancer</div>
+                    <div class="pub-authors">Arif, M., Williams, M., Garcia, R.</div>
+                    <div class="pub-journal">Cell Reports, 2021</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="section">
+            <div class="container">
+                <h2>Team</h2>
+                
+                <div class="team-grid">
+                    <div class="team-member" onclick="openModal('arif')">
+                        <div class="member-photo">MA</div>
+                        <h3>Muhammad Arif</h3>
+                        <p>Assistant Professor<br>Principal Investigator</p>
+                    </div>
+                    <div class="team-member" onclick="openModal('amandaolmin')">
+                        <div class="member-photo">AO</div>
+                        <h3>Amanda Olmin</h3>
+                        <p>Postdoctoral Researcher</p>
+                    </div>
+                    
+                    <div class="team-member" onclick="openModal('liamdavidsson')">
+                        <div class="member-photo">LA</div>
+                        <h3>Liam Davidsson</h3>
+                        <p>Associate Researcher</p>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section">
+          <div class="container">
+            <h2>Blog</h2>
+
+            <input 
+              type="text" 
+              id="blogSearch" 
+              placeholder="Search blogs..." 
+              style="margin: 1rem 0; padding: 10px; width: 100%; max-width: 400px; border: 1px solid #ccc; border-radius: 6px;"
+            >
+
+            <div id="blog-list"></div>
+            <div id="blog-content" style="margin-top:2rem;"></div>
+          </div>
+        </section>
+
+       <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script>
+        const siteTitle = "Precision Network Lab - University of Gothenburg";
+
+        function renderBlogList(blogList) {
+          const listDiv = document.getElementById("blog-list");
+          listDiv.innerHTML = "";
+
+          blogList.forEach(post => {
+            const card = document.createElement("div");
+            card.style.background = "linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%)";
+            card.style.padding = "1.5rem";
+            card.style.margin = "1rem 0";
+            card.style.borderRadius = "10px";
+            card.style.boxShadow = "0 4px 15px rgba(0, 75, 138, 0.1)";
+            card.style.cursor = "pointer";
+            card.onmouseover = () => (card.style.transform = "translateY(-5px)");
+            card.onmouseout = () => (card.style.transform = "translateY(0)");
+
+            card.innerHTML = `
+              <h3 style="color:#004b8a; margin-bottom:0.2rem;">${post.title}</h3>
+              ${post.author ? `<p style="margin:0 0 0.8rem 0; color:#7f8c8d;">
+                  by <a href="#" onclick="openModal('${post.author.id}'); return false;" 
+                         style="color:#3498db; text-decoration:none; cursor:pointer;">
+                    ${post.author.name}
+                  </a>
+                </p>` : ""}
+              <p style="color:#555; margin-bottom:1rem;">${post.teaser}</p>
+              <button class="btn">Read More →</button>
+            `;
+
+            card.querySelector("button").onclick = () => {
+              const author = post.author ? encodeURIComponent(JSON.stringify(post.author)) : "";
+              location.hash = "blog=" + post.file + (post.author ? "&author=" + post.author.id : "");
+            };
+
+            listDiv.appendChild(card);
+          });
+        }
+
+        function loadBlog(file, author) {
+          fetch(file)
+            .then(res => res.text())
+            .then(md => {
+              const blogContent = document.getElementById("blog-content");
+              document.getElementById("blog-list").style.display = "none";
+
+              let title = md.split("\n").find(line => line.startsWith("#"));
+              if (title) title = title.replace(/^# /, "");
+
+              let authorLine = "";
+              if (author) {
+                authorLine = `<p style="color:#7f8c8d; margin:0.5rem 0 1.5rem 0;">
+                    by <a href="#" onclick="openModal('${author.id}'); return false;" 
+                          style="color:#3498db; text-decoration:none; cursor:pointer;">
+                      ${author.name}
+                    </a>
+                  </p>`;
+              }
+
+              blogContent.innerHTML = `<h2>${title || ""}</h2>${authorLine}` +
+                                      marked.parse(md) + `
+                <div style="text-align:center; margin-top:2rem;">
+                  <button class="btn" onclick="backToList()">← Back to Blog List</button>
+                </div>`;
+            });
+        }
+
+        function backToList() {
+          document.getElementById("blog-content").innerHTML = "";
+          document.getElementById("blog-list").style.display = "block";
+          document.title = siteTitle;
+          location.hash = "blog";
+        }
+
+        function handleHash(blogList = []) {
+          const hash = location.hash;
+
+            if (hash.startsWith("#blog=")) {
+              const params = new URLSearchParams(hash.substring(6));
+              const file = params.keys().next().value; // first key = file path
+              const authorId = params.get("author");
+
+              const post = blogList.find(p => p.file === file);
+              const author = authorId && post ? post.author : null;
+
+              loadBlog(file, author);
+              showSection("blog");
+            }
+          else if (hash === "#blog") {
+            backToList();
+            showSection("blog");
+          } 
+          else if (hash) {
+            showSection(hash.substring(1));
+          } 
+          else {
+            showSection("home");
+          }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          fetch("blogs/index.json")
+            .then(res => res.json())
+            .then(blogList => {
+              renderBlogList(blogList);
+              handleHash(blogList);
+
+              window.addEventListener("hashchange", () => handleHash(blogList));
+            })
+            .catch(err => {
+              document.getElementById("blog-list").innerHTML = "<p>Could not load blog list.</p>";
+            });
+
+          document.getElementById("blogSearch").addEventListener("keyup", () => {
+            const query = document.getElementById("blogSearch").value.toLowerCase();
+            document.querySelectorAll("#blog-list > div").forEach(post => {
+              post.style.display = post.innerText.toLowerCase().includes(query) ? "block" : "none";
+            });
+          });
+        });
+        </script>
+
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Contact</h2>
+                <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                        For inquiries about research collaborations, PhD positions, or postdoctoral opportunities, please contact us.
+                    </p>
+                    
+                    <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px;">
+                        <h3>Muhammad Arif</h3>
+                        <p><strong>Assistant Professor</strong></p>
+                        <p><strong>Principal Investigator</strong></p>
+                        <p>University of Gothenburg<br>
+                        Department of Molecular and Clinical Medicine <br>
+                        Institute of Medicine <br>
+                        <p>Email: muhammad.arif [at] gu.se<br></p>
+
+                    </div><br>
+                <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                        Our lab is located at Wallenberg Laboratory, Sahlgrenska University Hospital, Gothenburg, Sweden
+                    </p>
+                    
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 15px;">
+                        <h3>Postal Address</h3>
+                        <p>Wallenberglaboratoriet<br>
+                            Sahlgrenska Universitetssjukhuset<br>
+                            SE-413 45 Göteborg</p>
+
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 15px;">
+                        <h3>Visiting Address</h3>
+                        <p>Wallenberglaboratoriet<br>
+                            Sahlgrenska Universitetssjukhuset<br>
+                            Bruna Stråket 16<br>
+                            SE-413 45 Göteborg</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Team Member Details -->
+    <div id="memberModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h2>Our lab is supported by:</h2>
+            <div class="funders">
+                <div class="funder"><a href="https://gu.se"><img src="images/GULogo.png" alt="University of Gothenburg "></div>
+                <div class="funder"><a href="https://scilifelab.se"><img src="images/SciLifeLabLogo.png" alt="SciLifeLab "></div>
+                <div class="funder"><a href="https://kaw.wallenberg.org/en"><img src="images/KAWlogo.png" alt="Knut och Alice Wallenbergs Stiftelse "></a></div>
+            </div>
+            <br>
+            <p>&copy; 2024 Precision Network Lab, University of Gothenburg. </p>
+            <p>This website was created 100% with Claude AI and ChatGPT. Feel free to reuse it for non-profit purpose.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        function showSection(sectionId) {
+          // Hide all sections
+          document.querySelectorAll('.section')
+            .forEach(section => section.classList.remove('active'));
+
+          const target = document.getElementById(sectionId);
+          if (target) {
+            target.classList.add('active');
+
+            // Only replace hash if not a blog post
+            if (!(location.hash.startsWith("#blog=") && sectionId === "blog")) {
+              history.replaceState(null, null, '#' + sectionId);
+            }
+
+            // Smooth scroll
+            const headerOffset = 100;
+            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }
+
+        window.addEventListener("hashchange", () => {
+          const sectionId = location.hash.substring(1);
+          if (sectionId) {
+            showSection(sectionId);
+          }
+        });
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            //setTimeout(initNetworkVisualization, 100);
+            heroInterval = setInterval(nextHeroCard, 3000);
+          // If there's a hash in URL, show that section
+          if (location.hash && !location.hash.startsWith("#blog=")) {
+            const sectionId = location.hash.substring(1);
+            showSection(sectionId);
+          } else {
+            showSection("home"); // default
+          }
+        });
+
+        function openModal(memberId) {
+            const modal = document.getElementById('memberModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            let content = '';
+            
+            switch(memberId) {
+                case 'arif':
+                    content = `
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">MA</div>
+                            <h2>Muhammad Arif</h2>
+                            <h4>Assistant Professor</h4>
+
+                            <h4>Principal Investigator</h4>
+                            <p style="margin-top: 1rem; text-align: left;">
+                                Arif leads xxxxxxxxxxxx
+                            </p>
+                            <p style="text-align: left;"><strong>Research Interests:</strong> Network biology, machine learning, multi-omics integration, systems biology</p>
+                            <p style="text-align: left;"><strong>Email:</strong> muhammad.arif[at]gu.se</p>
+                        </div>
+                    `;
+                    break;
+                case 'amandaolmin':
+                    content = `
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">AO</div>
+                            <h2>Amanda Olmin</h2>
+                            <h4>Postdoctoral Researcher</h4>
+                            <p style="margin-top: 1rem; text-align: left;">
+                                Amanda graduated from xxxxxxxxxxx
+                            </p>
+                            <p style="text-align: left;"><strong>Research Focus:</strong> Network analysis, graph algorithms, disease networks</p>
+                            <p style="text-align: left;"><strong>Email:</strong> amanda.olmin[at]gu.se</p>
+                        </div>
+                    `;
+                    break;
+                case 'liamdavidsson':
+                    content = `
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">LA</div>
+                            <h2>Liam Davidsson</h2>
+                            <h4>Associate Researcher</h4>
+                            <p style="margin-top: 1rem; text-align: left;">
+                                Liam xxxxx
+                            </p>
+                            <p style="text-align: left;"><strong>Research Focus:</strong> Deep learning, drug discovery, cancer genomics</p>
+                            <p style="text-align: left;"><strong>Email:</strong> liam.davidsson[at]gu.se</p>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            modalBody.innerHTML = content;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('memberModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('memberModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

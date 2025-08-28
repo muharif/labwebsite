@@ -1,0 +1,16 @@
+[
+  { 
+    "title": "Welcome to Our Lab Blog", 
+    "file": "blogs/welcome.md",
+    "teaser": "We are excited to launch our new lab blog! Here we’ll share research updates, publications, and stories from the lab.",
+    "image": "images/blog1.png",
+    "author": { "name": "Muhammad Arif", "id": "arif" }
+  },
+  { 
+    "title": "First Research Update", 
+    "file": "blogs/update1.md",
+    "teaser": "This week, we successfully integrated our new multi-omics dataset. Some highlights include better protein-protein interaction network predictions.",
+    "image": "images/blog2.png",
+    "author": { "name": "Liam Davidsson", "id": "liamdavidsson" }
+  }
+]
