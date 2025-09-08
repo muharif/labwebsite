@@ -1421,13 +1421,13 @@
                         <p>Assistant Professor<br>Principal Investigator</p>
                     </div>
                     <div class="team-member" onclick="openModal('amandaolmin')">
-                        <div class="member-photo">AO</div>
+                        <div class="member-photo"><img src="images/AmandaOlmin.jpg" alt="Amanda Olmin"></div>
                         <h3>Amanda Olmin</h3>
                         <p>Postdoctoral Researcher</p>
                     </div>
                     
                     <div class="team-member" onclick="openModal('liamdavidsson')">
-                        <div class="member-photo">LA</div>
+                        <div class="member-photo"><img src="images/LiamDavidsson.png" alt="Liam Davidsson"></div>
                         <h3>Liam Davidsson</h3>
                         <p>Associate Researcher</p>
                     </div>
@@ -1731,13 +1731,20 @@
                 case 'amandaolmin':
                     content = `
                         <div style="text-align: center;">
-                            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">AO</div>
+                            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;"><img src="images/AmandaOlmin.jpg" alt="Amanda Olmin"></div>
                             <h2>Amanda Olmin</h2>
                             <h4>Postdoctoral Researcher</h4>
                             <p style="margin-top: 1rem; text-align: left;">
-                                Amanda graduated from xxxxxxxxxxx
-                            </p>
-                            <p style="text-align: left;"><strong>Research Focus:</strong> Network analysis, graph algorithms, disease networks</p>
+                                I am a postdoctoral researcher focusing on statistics and deep learning for 
+                                cardiometabolic disease. I am particularly interested in developing deep 
+                                learning methods for multi-omics data, with the aim of uncovering disease 
+                                mechanisms and accelerating therapeutic discovery. I hold a PhD in Statistics 
+                                from Linköping University, where my research centered on developing methods 
+                                and advancing theoretical understanding at the intersection of deep learning 
+                                and probabilistic modeling. I also hold a degree in Bioengineering from 
+                                Chalmers University of Technology.
+                            </p><br>
+                            <p style="text-align: left;"><strong>Research Focus:</strong> Statistical modeling, multi-modal deep learning, multi-omics analysis, systems biology</p>
                             <p style="text-align: left;"><strong>Email:</strong> amanda.olmin[at]gu.se</p>
                         </div>
                     `;
@@ -1745,13 +1752,14 @@
                 case 'liamdavidsson':
                     content = `
                         <div style="text-align: center;">
-                            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">LA</div>
+                            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;"><img src="images/LiamDavidsson.png" alt="Liam Davidsson"></div>
                             <h2>Liam Davidsson</h2>
                             <h4>Associate Researcher</h4>
                             <p style="margin-top: 1rem; text-align: left;">
-                                Liam xxxxx
-                            </p>
-                            <p style="text-align: left;"><strong>Research Focus:</strong> Deep learning, drug discovery, cancer genomics</p>
+                                My work tends to focus on integrating diverse omics datasets such as transcriptomics, proteomics and metabolomics to build a more holistic view of the molecular mechanisms driving disease progression. By combining multiple data layers I aim to capture interactions that would be invisible in single omics studies and to construct multi scale models of cellular and tissue dynamics. Much of this involves developing and analyzing interaction networks that connect genes, proteins and pathways across time and conditions. Through these systems biology approaches I work to identify disease associated modules, pinpoint candidate regulators and generate mechanistic hypotheses that can guide experimental validation and translational applications.
+
+                            </p><br>
+                            <p style="text-align: left;"><strong>Research Focus:</strong> Systems Biology, Machine Learning, Transcriptional Regulation Network Analysis</p>
                             <p style="text-align: left;"><strong>Email:</strong> liam.davidsson[at]gu.se</p>
                         </div>
                     `;
