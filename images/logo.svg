@@ -1,0 +1,110 @@
+                <svg width="410" height="100" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Background circle for depth -->
+                  <circle cx="40" cy="40" r="32" fill="url(#bgGradient)" opacity="0.1"/>
+                  
+                  <!-- Network nodes -->
+                  <circle cx="22" cy="20" r="3.5" fill="url(#nodeGradient1)"/>
+                  <circle cx="40" cy="15" r="4" fill="url(#nodeGradient2)"/>
+                  <circle cx="58" cy="22" r="3" fill="url(#nodeGradient3)"/>
+                  <circle cx="15" cy="35" r="3" fill="url(#nodeGradient3)"/>
+                  <circle cx="32" cy="35" r="4.5" fill="url(#nodeGradient1)"/>
+                  <circle cx="48" cy="38" r="3.5" fill="url(#nodeGradient2)"/>
+                  <circle cx="65" cy="35" r="3" fill="url(#nodeGradient1)"/>
+                  <circle cx="25" cy="52" r="3.5" fill="url(#nodeGradient2)"/>
+                  <circle cx="45" cy="55" r="4" fill="url(#nodeGradient3)"/>
+                  <circle cx="35" cy="65" r="3" fill="url(#nodeGradient1)"/>
+                  <circle cx="55" cy="62" r="3" fill="url(#nodeGradient2)"/>
+                  
+                  <!-- Network connections -->
+                  <line x1="22" y1="20" x2="40" y2="15" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="40" y1="15" x2="58" y2="22" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="22" y1="20" x2="32" y2="35" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="32" y1="35" x2="48" y2="38" stroke="url(#connectionGradient)" stroke-width="2" opacity="0.8"/>
+                  <line x1="48" y1="38" x2="58" y2="22" stroke="url(#connectionGradient)" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="15" y1="35" x2="32" y2="35" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="48" y1="38" x2="65" y2="35" stroke="url(#connectionGradient)" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="32" y1="35" x2="25" y2="52" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="48" y1="38" x2="45" y2="55" stroke="url(#connectionGradient)" stroke-width="1.8" opacity="0.7"/>
+                  <line x1="25" y1="52" x2="45" y2="55" stroke="url(#connectionGradient)" stroke-width="1.6" opacity="0.6"/>
+                  <line x1="25" y1="52" x2="35" y2="65" stroke="url(#connectionGradient)" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="45" y1="55" x2="55" y2="62" stroke="url(#connectionGradient)" stroke-width="1.5" opacity="0.6"/>
+                  <line x1="35" y1="65" x2="55" y2="62" stroke="url(#connectionGradient)" stroke-width="1.4" opacity="0.5"/>
+                  <line x1="15" y1="35" x2="25" y2="52" stroke="url(#connectionGradient)" stroke-width="1.3" opacity="0.5"/>
+                  <line x1="65" y1="35" x2="55" y2="62" stroke="url(#connectionGradient)" stroke-width="1.3" opacity="0.5"/>
+                  
+                  <!-- Enhanced DNA double helix -->
+                  <!-- First strand -->
+                  <path d="M 68 18 Q 73 23 68 28 Q 63 33 68 38 Q 73 43 68 48 Q 63 53 68 58 Q 73 63 68 68" 
+                        stroke="url(#dnaGradient)" stroke-width="3" fill="none" opacity="0.8"/>
+                  <!-- Second strand -->
+                  <path d="M 74 18 Q 69 23 74 28 Q 79 33 74 38 Q 69 43 74 48 Q 79 53 74 58 Q 69 63 74 68" 
+                        stroke="url(#dnaGradient2)" stroke-width="3" fill="none" opacity="0.8"/>
+                  
+                  <!-- Base pairs (horizontal connections) -->
+                  <line x1="68" y1="23" x2="74" y2="23" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="68" y1="33" x2="74" y2="33" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="68" y1="43" x2="74" y2="43" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="68" y1="53" x2="74" y2="53" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  <line x1="68" y1="63" x2="74" y2="63" stroke="#34495e" stroke-width="1.2" opacity="0.6"/>
+                  
+                  <!-- Base pair dots -->
+                  <circle cx="71" cy="23" r="1" fill="#e74c3c" opacity="0.8"/>
+                  <circle cx="71" cy="33" r="1" fill="#3498db" opacity="0.8"/>
+                  <circle cx="71" cy="43" r="1" fill="#2ecc71" opacity="0.8"/>
+                  <circle cx="71" cy="53" r="1" fill="#f39c12" opacity="0.8"/>
+                  <circle cx="71" cy="63" r="1" fill="#e74c3c" opacity="0.8"/>
+                  
+                  <!-- Small data points (representing omics data) -->
+                  <circle cx="15" cy="15" r="1.5" fill="#3498db" opacity="0.8"/>
+                  <circle cx="65" cy="15" r="1.5" fill="#e74c3c" opacity="0.8"/>
+                  <circle cx="15" cy="65" r="1.5" fill="#2ecc71" opacity="0.8"/>
+                  <circle cx="65" cy="65" r="1.5" fill="#f39c12" opacity="0.8"/>
+                  
+                  <!-- Text -->
+                  <text x="95" y="32" font-family="'Segoe UI', Arial, sans-serif" font-size="24" font-weight="700" fill="url(#textGradient)">Computational</text>
+                  <text x="95" y="54" font-family="'Segoe UI', Arial, sans-serif" font-size="24" font-weight="700" fill="url(#textGradient)">Multi-Omics Lab</text>
+                  <text x="95" y="70" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="300" fill="#7f8c8d">University of Gothenburg</text>
+                  
+                  <!-- Gradients -->
+                  <defs>
+                    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#667eea"/>
+                      <stop offset="100%" stop-color="#764ba2"/>
+                    </linearGradient>
+                    
+                    <radialGradient id="nodeGradient1" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#3498db"/>
+                      <stop offset="100%" stop-color="#2980b9"/>
+                    </radialGradient>
+                    
+                    <radialGradient id="nodeGradient2" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#e74c3c"/>
+                      <stop offset="100%" stop-color="#c0392b"/>
+                    </radialGradient>
+                    
+                    <radialGradient id="nodeGradient3" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#2ecc71"/>
+                      <stop offset="100%" stop-color="#27ae60"/>
+                    </radialGradient>
+                    
+                    <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#3498db"/>
+                      <stop offset="100%" stop-color="#9b59b6"/>
+                    </linearGradient>
+                    
+                    <linearGradient id="dnaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#f39c12"/>
+                      <stop offset="100%" stop-color="#e67e22"/>
+                    </linearGradient>
+                    
+                    <linearGradient id="dnaGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#e74c3c"/>
+                      <stop offset="100%" stop-color="#c0392b"/>
+                    </linearGradient>
+                    
+                    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2c3e50"/>
+                      <stop offset="100%" stop-color="#34495e"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
