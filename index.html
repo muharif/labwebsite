@@ -1455,6 +1455,18 @@
                         <h3>Liam Davidsson</h3>
                         <p>PhD Candidate</p>
                     </div>
+
+                    <div class="team-member" onclick="openModal('ainhoacarrasco')">
+                        <div class="member-photo"><img src="images/Ainhoa.jpeg" alt="Ainhoa López - Carrasco"></div>
+                        <h3>Ainhoa López - Carrasco</h3>
+                        <p>Bioinformatics Intern</p>
+                    </div>
+
+                    <div class="team-member" onclick="openModal('martidiez')">
+                        <div class="member-photo"><img src="images/martidiez.jpg" alt="Martí Díez-Macià"></div>
+                        <h3>Martí Díez-Macià</h3>
+                        <p>Bioinformatics Intern</p>
+                    </div>
                     
                 </div>
 
@@ -1802,8 +1814,34 @@
                         </div>
                     `;
                     break;
+                case 'ainhoacarrasco':
+                    content = `
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;"><img src="images/Ainhoa.jpeg" alt="Ainhoa López - Carrasco"></div>
+                            <h2>Ainhoa López - Carrasco</h2>
+                            <h4>Bioinformatics Engineering Intern</h4>
+                            <p style="margin-top: 1rem; text-align: left;">
+                                I am a Bioinformatics Engineering student at the Universitat Politècnica de Catalunya (UPC), currently undertaking an internship at the Wallenberg Laboratory at the University of Gothenburg. My work focuses on cardiovascular multi-omics data analysis, combining bioinformatics and machine learning approaches to investigate molecular mechanisms associated with cardiovascular disease.
+                                I am particularly interested in the analysis and integration of complex biological datasets, with a focus on transcriptomics, multi-omics analysis and machine learning. My work involves applying computational and data-driven approaches to identify molecular patterns and relationships associated with cardiovascular disease and to better understand disease-related processes.
+
+                            </p><br>
+                            <p style="text-align: left;"><strong>Research Focus:</strong> Bioinformatics, Multi-omics Analysis, Machine Learning, Cardiovascular Disease</p>
+                        </div>
+                    `;
+                    break;
+                case 'martidiez':
+                    content = `
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;"><img src="images/martidiez.jpg" alt="Martí Díez-Macià"></div>
+                            <h2>Martí Díez-Macià</h2>
+                            <h4>Bioinformatics Engineering Intern</h4>
+                            <p style="margin-top: 1rem; text-align: left;">
+                                I am a fourth-year Bioinformatics student at the Universitat Politècnica de Catalunya (UPC), with a strong interest in biomedical data analysis and its applications in translational research. I am currently carrying out my internship and Bachelor’s Thesis (TFG) at the Redfors Laboratory, where I am applying my skills in programming, statistical analysis, and biological data processing to study biomedical and clinical questions. My main interests focus on integrating clinical, imaging, and omics data to better understand disease mechanisms and contribute to the development of improved diagnostic and therapeutic strategies.
+                            </p><br>
+                        </div>
+                    `;
+                    break;
             }
-            
             modalBody.innerHTML = content;
             modal.style.display = 'block';
         }
